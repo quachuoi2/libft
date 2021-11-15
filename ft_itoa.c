@@ -6,7 +6,7 @@
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 05:48:16 by qnguyen           #+#    #+#             */
-/*   Updated: 2021/11/11 04:27:53 by qnguyen          ###   ########.fr       */
+/*   Updated: 2021/11/15 19:24:03 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*ft_itoa(int n)
 	int		c;
 
 	c = count_digit(n);
-	s = (char *)malloc(sizeof(char) * (c + 2));
+	s = (char *)malloc(sizeof(char) * (c + 1 + 1));
 	if (s == NULL)
 		return (NULL);
 	if (n == -2147483648)
