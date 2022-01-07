@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_countwords.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/05 07:40:07 by qnguyen           #+#    #+#             */
-/*   Updated: 2021/12/09 20:21:12 by qnguyen          ###   ########.fr       */
+/*   Created: 2021/12/02 18:01:45 by qnguyen           #+#    #+#             */
+/*   Updated: 2021/12/02 18:01:54 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+int	ft_countwords(const char *s, char c)
 {
-	if (n == -2147483648)
+	int	i;
+	int	words;
+
+	i = 0;
+	words = 0;
+	while (s[i] != '\0')
 	{
-		ft_putstr_fd("-2147483648", fd);
-		return ;
+		if ((s[i] == c) && (s[i + 1] != c) && (s[i + 1] != '\0'))
+			words++;
+		i++;
 	}
-	if (n < 0)
-	{
-		ft_putchar_fd('-', fd);
-		n *= -1;
-	}
-	if (n > 9)
-		ft_putnbr_fd(n / 10, fd);
-	ft_putchar_fd(n % 10 + '0', fd);
+	if (s[0] != c)
+		words++;
+	return (words);
 }

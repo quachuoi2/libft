@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_arrdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/05 07:40:07 by qnguyen           #+#    #+#             */
-/*   Updated: 2021/12/09 20:21:12 by qnguyen          ###   ########.fr       */
+/*   Created: 2021/12/04 06:31:59 by qnguyen           #+#    #+#             */
+/*   Updated: 2021/12/09 20:22:57 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+void	ft_arrdel(char ***arr)
 {
-	if (n == -2147483648)
-	{
-		ft_putstr_fd("-2147483648", fd);
-		return ;
-	}
-	if (n < 0)
-	{
-		ft_putchar_fd('-', fd);
-		n *= -1;
-	}
-	if (n > 9)
-		ft_putnbr_fd(n / 10, fd);
-	ft_putchar_fd(n % 10 + '0', fd);
+	int	i;
+
+	i = 0;
+	while ((*arr)[i] != NULL)
+		ft_strdel(&(*arr)[i++]);
+	free(*arr);
+	(*arr) = NULL;
 }

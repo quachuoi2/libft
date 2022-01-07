@@ -6,7 +6,7 @@
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 01:43:55 by qnguyen           #+#    #+#             */
-/*   Updated: 2021/11/14 21:12:16 by qnguyen          ###   ########.fr       */
+/*   Updated: 2021/12/07 22:29:33 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ void	ft_lstadd_back(t_list **alst, t_list *new)
 		*alst = new;
 	else
 	{
-		temp = *alst;
-		while ((*temp).next != NULL)
-			temp = (*temp).next;
+		temp = ft_lstlast(*alst);
 		(*temp).next = new;
 	}
 	(*new).next = NULL;

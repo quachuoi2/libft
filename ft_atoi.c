@@ -22,14 +22,14 @@ static char	check_negative(char c)
 		return ('z');
 }
 
-int	ft_atoi(char *str)
+int	ft_atoi(const char *str)
 {
 	int				i;
 	long long		sum;
 	char			np;
 
 	i = 0;
-	while (ft_is_space(str[i]) == 1)
+	while (ft_isspace(str[i]) == 1)
 		i++;
 	np = check_negative(str[i]);
 	if (np == 'p' || np == 'n')
@@ -44,7 +44,7 @@ int	ft_atoi(char *str)
 		i++;
 	}
 	if (np == 'n')
-		return (sum * -1);
+		return ((int)(sum * -1));
 	else
-		return (sum);
+		return ((int)sum);
 }

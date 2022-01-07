@@ -6,7 +6,7 @@
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 02:18:07 by qnguyen           #+#    #+#             */
-/*   Updated: 2021/11/14 18:39:15 by qnguyen          ###   ########.fr       */
+/*   Updated: 2021/12/07 18:50:46 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 
 void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	if (del == NULL)
+	t_list	*temp;
+
+	if (del == NULL || *alst == NULL)
 		return ;
 	while (*alst != NULL)
 	{
+		temp = (**alst).next;
 		del((**alst).content, (**alst).content_size);
 		free(*alst);
-		*alst = (**alst).next;
+		*alst = temp;
 	}
 }
