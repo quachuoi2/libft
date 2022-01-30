@@ -6,12 +6,13 @@
 #    By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/29 19:02:23 by qnguyen           #+#    #+#              #
-#    Updated: 2022/01/30 14:47:04 by qnguyen          ###   ########.fr        #
+#    Updated: 2022/01/30 15:25:04 by qnguyen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
-SRCS = ft_arrdel ft_atoi ft_bzero ft_calloc ft_countwords ft_d2b ft_d2h ft_diglen ft_isspace\
+SRCS = ft_arrdel ft_atoi ft_bzero ft_calloc ft_countwords ft_d2b ft_d2h ft_d2o\
+ft_diglen ft_isspace\
 ft_isalnum ft_isalpha ft_isascii ft_isdigit ft_itoa ft_isprint ft_linkdel \
 ft_lstadd_back ft_lstadd ft_lstdel ft_lstdelone ft_lstiter ft_lstlast \
 ft_lstmap ft_lstnew ft_lststrsplit ft_memalloc ft_memccpy ft_memchr ft_memcmp \
@@ -27,7 +28,7 @@ FLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME): $(addprefix srcs/, $(addsuffix .c, $(SRCS))) includes/libft.h
-	gcc $(FLAGS) -c $^ -I$(INCLUDE)
+	gcc $(FLAGS) -c $(addprefix srcs/, $(addsuffix .c, $(SRCS))) -I$(INCLUDE)
 	ar -rcs $(NAME) $(addsuffix .o, $(SRCS))
 
 clean:

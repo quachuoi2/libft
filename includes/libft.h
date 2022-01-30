@@ -45,6 +45,8 @@ void		ft_d2b(int a);
 
 void		ft_d2h(long long n, char x);
 
+void		ft_d2o(long long n);
+
 int			ft_diglen(int n);
 
 int			ft_isalnum(int c);
