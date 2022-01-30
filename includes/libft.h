@@ -43,7 +43,7 @@ int			ft_countwords(const char *s, char c);
 
 void		ft_d2b(int a);
 
-void		ft_d2h(long long n);
+void		ft_d2h(long long n, char x);
 
 int			ft_diglen(int n);
 

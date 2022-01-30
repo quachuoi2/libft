@@ -6,7 +6,7 @@
 #    By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/29 19:02:23 by qnguyen           #+#    #+#              #
-#    Updated: 2022/01/29 14:44:44 by qnguyen          ###   ########.fr        #
+#    Updated: 2022/01/30 14:47:04 by qnguyen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,20 +21,17 @@ ft_strcat ft_strchr ft_strclr ft_strcmp ft_strcpy ft_strdel ft_strdup \
 ft_strequ ft_striter ft_striteri ft_strjoin ft_strlcat ft_strlen ft_strmap \
 ft_strmapi ft_strncat ft_strncmp ft_strncpy ft_strnequ ft_strnew ft_strnstr \
 ft_strrchr ft_strsplit ft_strstr ft_strsub ft_strtrim ft_tolower ft_toupper
+INCLUDE = includes/
+FLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(NAME): $(addsuffix .o, $(SRCS))
-	@ar -rcs $(NAME) $^
-
-.c.o: $(addsuffix .c, $(SRCS)) libft.h
-	@gcc -Wall -Wextra -Werror -c $<
+$(NAME): $(addprefix srcs/, $(addsuffix .c, $(SRCS))) includes/libft.h
+	gcc $(FLAGS) -c $^ -I$(INCLUDE)
+	ar -rcs $(NAME) $(addsuffix .o, $(SRCS))
 
 clean:
 	@/bin/rm -f $(wildcard *.o)
-
-so:
-	@gcc $(addsuffix .c, $(SRCS)) -nostartfiles -fPIC -Wall -Wextra -Werror -shared -o libft.so
 
 fclean: clean
 	@/bin/rm -f $(NAME)

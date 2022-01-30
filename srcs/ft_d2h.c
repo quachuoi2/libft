@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthex.c                                        :+:      :+:    :+:   */
+/*   ft_d2h.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 14:27:53 by qnguyen           #+#    #+#             */
-/*   Updated: 2022/01/29 14:42:53 by qnguyen          ###   ########.fr       */
+/*   Updated: 2022/01/30 12:05:49 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	hex_digit(long long v)
+static char	hex_digit(long long v, char x)
 {
 	if (v >= 0 && v < 10)
 		return ('0' + v);
-	else
+	if (x == 'x')
 		return ('a' + v - 10);
+	else
+		return ('A' + v - 10);
 }
 
-void	ft_d2h(long long n)
+void	ft_d2h(long long n, char x)
 {
 	if (n == 0)
 		return ;
-	ft_d2h(n / 16);
-	ft_putchar(hex_digit(n % 16));
+	ft_d2h(n / 16, x);
+	ft_putchar(hex_digit(n % 16, x));
 }
 
 /* void	ft_hexprint(void *pointer)
