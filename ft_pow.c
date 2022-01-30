@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_pow.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/05 05:48:03 by qnguyen           #+#    #+#             */
-/*   Updated: 2022/01/30 11:51:03 by qnguyen          ###   ########.fr       */
+/*   Created: 2022/01/22 21:10:23 by qnguyen           #+#    #+#             */
+/*   Updated: 2022/01/29 11:24:24 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr(long long n)
+long int	ft_pow(int num, int power)
 {
-/* 	if (n == -9223372036854775807)
-	{
-		ft_putstr("-9223372036854775807");
-		return ;
-	} */
-	if (n < 0)
-	{
-		ft_putchar('-');
-		n *= -1;
-	}
-	if (n > 9)
-		ft_putnbr(n / 10);
-	ft_putchar(n % 10 + '0');
+	long int	res;
+
+	res = 1;
+	while (power--)
+		res *= num;
+	return (res);
 }

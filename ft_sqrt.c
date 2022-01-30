@@ -1,30 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/05 05:48:03 by qnguyen           #+#    #+#             */
-/*   Updated: 2022/01/30 11:51:03 by qnguyen          ###   ########.fr       */
+/*   Created: 2021/10/28 18:40:19 by okinnune          #+#    #+#             */
+/*   Updated: 2022/01/12 23:11:23 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr(long long n)
+int	ft_sqrt(int num)
 {
-/* 	if (n == -9223372036854775807)
+	int	i;
+	int	min;
+	int	max;
+	int	s;
+
+	i = 1;
+	s = i;
+	min = i;
+	max = num;
+	while (s != num && max - min != 1)
 	{
-		ft_putstr("-9223372036854775807");
-		return ;
-	} */
-	if (n < 0)
-	{
-		ft_putchar('-');
-		n *= -1;
+		if (s < num)
+		{
+			min = i;
+			i = (i + max) / 2;
+		}
+		else
+		{
+			max = i;
+			i = (i + min) / 2;
+		}
+		s = i * i;
 	}
-	if (n > 9)
-		ft_putnbr(n / 10);
-	ft_putchar(n % 10 + '0');
+	return (i);
 }

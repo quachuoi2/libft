@@ -41,6 +41,10 @@ void		*ft_calloc(size_t count, size_t size);
 
 int			ft_countwords(const char *s, char c);
 
+void		ft_d2b(int a);
+
+void		ft_d2h(long long n);
+
 int			ft_diglen(int n);
 
 int			ft_isalnum(int c);
@@ -95,6 +99,8 @@ void		*ft_memset(void *b, int c, size_t len);
 
 void		ft_putchar_fd(char c, int fd);
 
+long int	ft_pow(int num, int power);
+
 void		ft_putchar(char c);
 
 void		ft_putendl_fd(char const *s, int fd);
@@ -103,11 +109,13 @@ void		ft_putendl(char const *s);
 
 void		ft_putnbr_fd(int n, int fd);
 
-void		ft_putnbr(int n);
+void		ft_putnbr(long long n);
 
 void		ft_putstr_fd(char *s, int fd);
 
 void		ft_putstr(char *s);
+
+int			ft_sqrt(int num);
 
 char		*ft_strcat(char *dest, const char *src);
 
