@@ -6,7 +6,7 @@
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 14:27:53 by qnguyen           #+#    #+#             */
-/*   Updated: 2022/01/30 12:05:49 by qnguyen          ###   ########.fr       */
+/*   Updated: 2022/02/02 20:12:32 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ static char	hex_digit(long long v, char x)
 		return ('A' + v - 10);
 }
 
-void	ft_d2h(long long n, char x)
+int	ft_d2h(long long n, int i, char x)
 {
-	if (n == 0)
-		return ;
-	ft_d2h(n / 16, x);
+	if (n > 15)
+		i = ft_d2h(n / 16, i, x);
 	ft_putchar(hex_digit(n % 16, x));
+	return (i + 1);
 }
 
 /* void	ft_hexprint(void *pointer)

@@ -43,11 +43,11 @@ int			ft_countwords(const char *s, char c);
 
 void		ft_d2b(int a);
 
-void		ft_d2h(long long n, char x);
+int			ft_d2h(long long n, int i, char x);
 
-void		ft_d2o(long long n);
+int			ft_d2o(long long n, int i);
 
-int			ft_diglen(int n);
+int			ft_diglen(long long n);
 
 int			ft_isalnum(int c);
 

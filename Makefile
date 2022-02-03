@@ -6,7 +6,7 @@
 #    By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/29 19:02:23 by qnguyen           #+#    #+#              #
-#    Updated: 2022/01/30 15:25:04 by qnguyen          ###   ########.fr        #
+#    Updated: 2022/02/02 20:08:00 by qnguyen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,14 +22,15 @@ ft_strcat ft_strchr ft_strclr ft_strcmp ft_strcpy ft_strdel ft_strdup \
 ft_strequ ft_striter ft_striteri ft_strjoin ft_strlcat ft_strlen ft_strmap \
 ft_strmapi ft_strncat ft_strncmp ft_strncpy ft_strnequ ft_strnew ft_strnstr \
 ft_strrchr ft_strsplit ft_strstr ft_strsub ft_strtrim ft_tolower ft_toupper
-INCLUDE = includes/
 FLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(NAME): $(addprefix srcs/, $(addsuffix .c, $(SRCS))) includes/libft.h
-	gcc $(FLAGS) -c $(addprefix srcs/, $(addsuffix .c, $(SRCS))) -I$(INCLUDE)
+$(NAME): $(addsuffix .o, $(SRCS))
 	ar -rcs $(NAME) $(addsuffix .o, $(SRCS))
+
+.c.o: $(addsuffix .c, $(SRCS)) libft.h
+	gcc $(FLAGS) -c $<
 
 clean:
 	@/bin/rm -f $(wildcard *.o)
