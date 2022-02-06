@@ -41,11 +41,7 @@ void		*ft_calloc(size_t count, size_t size);
 
 int			ft_countwords(const char *s, char c);
 
-void		ft_d2b(int a);
-
-int			ft_d2h(long long n, int i, char x);
-
-int			ft_d2o(long long n, int i);
+int			ft_d2base(long long n, int base, int digit, char x);
 
 int			ft_diglen(long long n);
 
@@ -108,6 +104,8 @@ void		ft_putchar(char c);
 void		ft_putendl_fd(char const *s, int fd);
 
 void		ft_putendl(char const *s);
+
+void		ft_putfloat(double lift, int i);
 
 void		ft_putnbr_fd(int n, int fd);
 

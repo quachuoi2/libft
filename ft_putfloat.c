@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_d2o.c                                           :+:      :+:    :+:   */
+/*   ft_putfloat.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/30 15:20:38 by qnguyen           #+#    #+#             */
-/*   Updated: 2022/02/02 20:11:41 by qnguyen          ###   ########.fr       */
+/*   Created: 2022/02/05 18:39:42 by qnguyen           #+#    #+#             */
+/*   Updated: 2022/02/06 23:33:07 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_d2o(long long n, int i)
+void	ft_putfloat(double lift, int i)
 {
-	if (n > 7)
-		i = ft_d2o(n / 8, i);
-	ft_putnbr(n % 8);
-	return (i + 1);
+	ft_putnbr((int)lift);
+	ft_putchar('.');
+	lift -= (int)lift;
+	while (i > 0)
+	{
+		lift *= 10;
+		i--;
+	}
+	ft_putnbr((int)lift);
 }
