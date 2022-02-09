@@ -6,21 +6,29 @@
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:39:42 by qnguyen           #+#    #+#             */
-/*   Updated: 2022/02/06 23:33:07 by qnguyen          ###   ########.fr       */
+/*   Updated: 2022/02/09 12:08:24 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putfloat(double lift, int i)
+int	ft_putfloat(double lift, int i)
 {
-	ft_putnbr((int)lift);
+	int	temp;
+
+	temp = (int)lift;
+	ft_putnbr(temp);
 	ft_putchar('.');
-	lift -= (int)lift;
+	lift -= temp;
+	temp = ft_diglen(temp) + 1 + i;
 	while (i > 0)
 	{
 		lift *= 10;
 		i--;
 	}
-	ft_putnbr((int)lift);
+  	if (lift - (int)lift >= 0.5)
+		ft_putnbr((int)lift + 1);
+	else
+		ft_putnbr((int)lift);
+	return (temp);
 }

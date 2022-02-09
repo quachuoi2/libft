@@ -99,17 +99,17 @@ void		ft_putchar_fd(char c, int fd);
 
 long int	ft_pow(int num, int power);
 
-void		ft_putchar(char c);
+int			ft_putchar(char c);
 
 void		ft_putendl_fd(char const *s, int fd);
 
 void		ft_putendl(char const *s);
 
-void		ft_putfloat(double lift, int i);
+int			ft_putfloat(double lift, int i);
 
 void		ft_putnbr_fd(int n, int fd);
 
-void		ft_putnbr(long long n);
+int			ft_putnbr(long long n);
 
 void		ft_putstr_fd(char *s, int fd);
 
