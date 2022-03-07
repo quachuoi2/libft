@@ -12,7 +12,9 @@
 
 #ifndef LIBFT_H
 # define LIBFT_H
-
+/* # define ABS(Value) ((Value < 0) ? (-Value):(Value))
+# define SMOL_NUM(value1, value2) (value1 < value2 ? value1 : value2)
+# define BIG_NUM(value1, value2) (value1 > value2 ? value1 : value2) */
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
@@ -31,6 +33,8 @@ typedef struct s_index
 	int	k;
 }				t_index;
 
+int			ft_abs(int n);
+
 void		ft_arrdel(char ***arr);
 
 int			ft_atoi(const char *str);
@@ -41,9 +45,13 @@ void		*ft_calloc(size_t count, size_t size);
 
 int			ft_countwords(const char *s, char c);
 
-int			ft_d2base(long long n, int base, int digit, char x);
+void		ft_d2base(unsigned long long n, int base, char x);
 
 int			ft_diglen(long long n);
+
+int			ft_udiglen(unsigned long long n, int base);
+
+int			ft_greaternum(int a, int b);
 
 int			ft_isalnum(int c);
 
@@ -105,15 +113,17 @@ void		ft_putendl_fd(char const *s, int fd);
 
 void		ft_putendl(char const *s);
 
-int			ft_putfloat(double lift, int i);
+void		ft_putfloat(long double lift, int i);
 
 void		ft_putnbr_fd(int n, int fd);
 
-int			ft_putnbr(long long n);
+void		ft_putnbr(long long n);
 
 void		ft_putstr_fd(char *s, int fd);
 
-void		ft_putstr(char *s);
+int			ft_putstr(char *s);
+
+int			ft_smallernum(int a, int b);
 
 int			ft_sqrt(int num);
 

@@ -6,7 +6,7 @@
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 18:35:47 by qnguyen           #+#    #+#             */
-/*   Updated: 2022/02/05 18:37:28 by qnguyen          ###   ########.fr       */
+/*   Updated: 2022/02/11 03:16:26 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,14 @@ static char	hex_digit(long long v, char x)
 		return ('a' + v - 10);
 }
 
-int	ft_d2base(long long n, int base, int digit, char x)
+void	ft_d2base(unsigned long long n, int base, char x)
 {
-	if (n > base - 1)
-		digit = ft_d2base(n / base, base, digit, x);
+	if (n > (unsigned long long)(base - 1))
+		ft_d2base(n / base, base, x);
 	if (base < 11)
 		ft_putnbr(n % base);
 	else
 		ft_putchar(hex_digit(n % base, x));
-	return (digit + 1);
 }
 
 /* void	ft_hexprint(void *pointer)
