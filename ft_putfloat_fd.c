@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putfloat.c                                      :+:      :+:    :+:   */
+/*   ft_putfloat_fd.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/05 18:39:42 by qnguyen           #+#    #+#             */
-/*   Updated: 2022/04/21 07:19:43 by qnguyen          ###   ########.fr       */
+/*   Created: 2022/03/27 01:56:09 by qnguyen           #+#    #+#             */
+/*   Updated: 2022/04/21 07:19:50 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	number_rounding(int *temp, int *i, long long *main_num,
 	}
 }
 
-int	ft_putfloat(long double lift, int prec)
+int	ft_putfloat_fd(long double lift, int prec, int fd)
 {
 	long long	main_num;
 	int			i;
@@ -41,17 +41,17 @@ int	ft_putfloat(long double lift, int prec)
 	while (i++ < prec)
 		lift *= 10;
 	number_rounding(&temp, &i, &main_num, &lift);
-	ft_putnbr(main_num);
+	ft_putnbr_fd(main_num, fd);
 	if (prec)
 	{
-		write(1, ".", 1);
+		write(fd, ".", 1);
 		while (prec-- > i)
-			write(1, "0", 1);
+			write(fd, "0", 1);
 		if (!lift)
 			while (prec-- >= 0)
-				write(1, "0", 1);
+				write(fd, "0", 1);
 		else
-			ft_putnbr((long long)lift);
+			ft_putnbr_fd((long long)lift, fd);
 	}
 	return (!temp);
 }
