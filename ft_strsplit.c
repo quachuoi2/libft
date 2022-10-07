@@ -6,7 +6,7 @@
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 23:13:47 by qnguyen           #+#    #+#             */
-/*   Updated: 2021/12/08 21:53:40 by qnguyen          ###   ########.fr       */
+/*   Updated: 2022/10/07 12:38:16 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,29 +22,47 @@ static int	check_failed_malloc(char ***arr, int i)
 	return (1);
 }
 
+static void	move_to_char(const char *s, char *buf, t_index *i, char c)
+{
+	while ((s[i->str_idx] != c) && s[i->str_idx] != '\0')
+		buf[i->buf_idx++] = s[i->str_idx++];
+	buf[i->buf_idx] = '\0';
+}
+
+static int	protect_malloc(char **arr, char *buf)
+{
+	if (!arr || !buf)
+	{
+		if (arr)
+			free(arr);
+		if (buf)
+			free(buf);
+		return (0);
+	}
+	return (1);
+}
+
 char	**ft_strsplit(const char *s, char c)
 {
 	char	**arr;
 	char	*buf;
-	t_index	index;
+	t_index	i;
 
 	arr = (char **)ft_memalloc(sizeof(char *) * (ft_countwords(s, c) + 1));
-	buf = (char *)ft_memalloc(sizeof(char) * ft_strlen(s));
-	if (arr == NULL || buf == NULL)
+	buf = (char *)ft_memalloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (protect_malloc(arr, buf) == 0)
 		return (NULL);
-	index.i = 0;
-	index.k = 0;
-	while (index.i <= (int)ft_strlen(s))
+	i.str_idx = 0;
+	i.arr_idx = 0;
+	while (i.str_idx <= (int)ft_strlen(s))
 	{
-		index.j = 0;
-		while ((s[index.i] != c) && s[index.i] != '\0')
-			buf[index.j++] = s[index.i++];
-		buf[index.j] = '\0';
-		if (buf[0] != '\0')
-			arr[index.k++] = ft_strdup(buf);
-		if (index.k > 0 && check_failed_malloc(&arr, index.k - 1) == 0)
+		i.buf_idx = 0;
+		move_to_char(s, buf, &i, c);
+		if (buf[0] != 0)
+			arr[i.arr_idx++] = ft_strdup(buf);
+		if (i.arr_idx > 0 && check_failed_malloc(&arr, i.arr_idx - 1) == 0)
 			return (NULL);
-		index.i++;
+		i.str_idx++;
 	}
 	free(buf);
 	return (arr);
