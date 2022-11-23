@@ -6,7 +6,7 @@
 /*   By: qnguyen <qnguyen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 23:13:47 by qnguyen           #+#    #+#             */
-/*   Updated: 2022/10/07 12:38:16 by qnguyen          ###   ########.fr       */
+/*   Updated: 2022/11/23 02:11:23 by qnguyen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	check_failed_malloc(char ***arr, int i)
 
 static void	move_to_char(const char *s, char *buf, t_index *i, char c)
 {
-	while ((s[i->str_idx] != c) && s[i->str_idx] != '\0')
+	while (s[i->str_idx] != c && s[i->str_idx] != '\0')
 		buf[i->buf_idx++] = s[i->str_idx++];
 	buf[i->buf_idx] = '\0';
 }
